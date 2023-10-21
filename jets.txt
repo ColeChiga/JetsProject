@@ -1,3 +1,4 @@
 Cargo, model, 100, 10, 100000
-fight, fighter model, 200, 500, 750000
+Fighter, fighter model, 200, 500, 750000
 Passenger, Boeing 727, 750, 243000
+Car, Toyota, 100, 500, 10000
