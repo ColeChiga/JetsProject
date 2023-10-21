@@ -61,12 +61,16 @@ public class JetsApp {
 		List<Jet> jets = new ArrayList<>();
 		try (BufferedReader bufIn = new BufferedReader(new FileReader(fileName))) {
 			String line;
+			
 			while ((line = bufIn.readLine()) != null) {
+				
 				String JetRecord[] = line.split(", ");
+				
 				String model = JetRecord[1];
 				double speed = Double.parseDouble(JetRecord[2]);
 				int range = Integer.parseInt(JetRecord[3]);
 				long price = Long.parseLong(JetRecord[4]);
+				
 				if (JetRecord[0].equals("Cargo")) {
 					CargoPlane cp = new CargoPlane(model, speed, range, price);
 					jets.add(cp);
@@ -98,23 +102,42 @@ public class JetsApp {
 	}
 
 	private void fastest() {
-		// TODO Auto-generated method stub
-
+		Jet fastest = fleet.getFleet().get(0);
+			
+		for (Jet jet : fleet.getFleet()) {
+			if (fastest.getSpeed() < jet.getSpeed()) {
+				fastest = jet;
+			}
+		}
+		System.out.println(fastest.toString());	
+			
 	}
 
 	private void longestRange() {
-		// TODO Auto-generated method stub
-
+		Jet farthest = fleet.getFleet().get(0);
+		
+		for (Jet jet : fleet.getFleet()) {
+			if (farthest.getRange() < jet.getRange()) {
+				farthest = jet;
+			}
+		}
+		System.out.println(farthest.toString());	
 	}
 
 	private void loadCargo() {
-		// TODO Auto-generated method stub
-
+		for (Jet jet : fleet.getFleet()) {
+			if(jet instanceof CargoPlane) {
+				((CargoPlane) jet).loadCargo();
+			}
+		}
 	}
 
 	private void dogFight() {
-		// TODO Auto-generated method stub
-
+		for (Jet jet : fleet.getFleet()) {
+			if(jet instanceof FighterJet) {
+				((FighterJet) jet).fight();
+			}
+		}
 	}
 
 	public void addJets() {
