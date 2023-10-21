@@ -11,7 +11,7 @@ public class JetsApp {
 	public static void main(String[] args) {
 		JetsApp ja = new JetsApp();
 		ja.launch();
-
+		ja.sc.close();
 	}
 
 	public void launch() {
@@ -65,8 +65,8 @@ public class JetsApp {
 				String JetRecord[] = line.split(", ");
 				String model = JetRecord[1];
 				double speed = Double.parseDouble(JetRecord[2]);
-				int range = Integer.parseInt(JetRecord[2]);
-				long price = Long.parseLong(JetRecord[3]);
+				int range = Integer.parseInt(JetRecord[3]);
+				long price = Long.parseLong(JetRecord[4]);
 				if (JetRecord[0].equals("Cargo")) {
 					CargoPlane cp = new CargoPlane(model, speed, range, price);
 					jets.add(cp);
@@ -81,20 +81,20 @@ public class JetsApp {
 			}
 		} catch (IOException e) {
 			System.err.println(e);
-		}
+		} 
 		return jets;
 	}
 
-	private void ListFleet() {
-			
+	private void ListFleet() {	
 		for (Jet jet : fleet.getFleet()) {
 			System.out.println(jet.toString());	
 		}
 	}
 
 	private void FlyJets() {
-		// TODO Auto-generated method stub
-
+		for (Jet jet : fleet.getFleet()) {
+			jet.fly();	
+		}
 	}
 
 	private void fastest() {
