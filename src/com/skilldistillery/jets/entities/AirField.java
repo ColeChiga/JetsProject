@@ -16,6 +16,9 @@ public class AirField {
 		return fleet;
 	}
 
+	public int size() {
+		return fleet.size();
+	}
 
 
 	public void setFleet(List<Jet> fleet) {

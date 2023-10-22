@@ -14,6 +14,9 @@ public class PassengerJet extends Jet {
 		System.out.printf("%s, Time in the air= %.2f hours.%n", this.toString(), time );
 	}
 
+	public String fileFormat() {
+		return "Passenger, " + getModel() + ", " + getSpeed() + ", " + getRange()+ ", " + getPrice()+ "\n";
+	}
 	@Override
 	public String toString() {
 		return "Passenger Jet: Model= " + getModel() + ", Speed= " + getSpeed() + " mph, Range= " + getRange()

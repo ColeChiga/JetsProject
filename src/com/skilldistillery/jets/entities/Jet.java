@@ -68,6 +68,8 @@ public abstract class Jet {
 	}
 
 
+	public abstract String fileFormat();
+	
 
 	public abstract void fly();
 	

@@ -18,6 +18,9 @@ public class CargoPlane extends Jet implements CargoCarrier{
 		System.out.printf("%s, Time in the air= %.2f hours.%n", this.toString(), time );
 	}
 
+	public String fileFormat() {
+		return "Cargo, " + getModel() + ", " + getSpeed() + ", " + getRange()+ ", " + getPrice() + "\n";
+	}
 	@Override
 	public String toString() {
 		return "Cargo Plane: Model= " + getModel() + ", Speed= " + getSpeed() + " mph, Range= " + getRange()

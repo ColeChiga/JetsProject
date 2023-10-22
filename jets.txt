@@ -1,4 +1,6 @@
-Cargo, model, 100, 10, 100000
-Fighter, fighter model, 200, 500, 750000
-Passenger, Boeing 727, 750, 700, 243000
-Car, Toyota, 100, 500, 10000
+Passenger, Boeing 727, 750.0, 700, 243000
+Fighter, Bell X-1, 1612.0, 600, 1000000
+Passenger, Concorde, 1350.0, 4500, 130000000
+Cargo, Boeing C-17, 590.0, 2760, 340000000
+Fighter, B-2 Bomber, 628.0, 6900, 1000000000
+Passenger, Airbus A380, 737.0, 9500, 350000000
