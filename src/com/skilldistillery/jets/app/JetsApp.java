@@ -52,7 +52,11 @@ public class JetsApp {
 			case 8:
 				removeJets();
 				break;
+			case 9:
+				System.out.println("You have chosen to quit.");
+				break;
 			default:
+				System.err.println("Invalid input.");
 				continue;
 			}
 		} while (input != 9);
@@ -158,8 +162,8 @@ public class JetsApp {
 //Story 9
 	public void addJets() {
 		boolean addLoop = true;
+		while (addLoop) {
 			try {
-				while (addLoop) {
 				newJetMenu();
 				int iType = sc.nextInt();
 				String sType = "";
@@ -212,12 +216,11 @@ public class JetsApp {
 					System.err.println("Invalid input.");
 				}
 
-				}
 			} catch (InputMismatchException e) {
 				sc.nextLine();
 				System.err.println("Invalid input.");
-				addJets();
 			}
+		}
 	}
 
 // Story 9 sub-menu
@@ -283,7 +286,6 @@ public class JetsApp {
 			} catch (InputMismatchException e) {
 				sc.nextLine();
 				System.err.println("Invalid input.");
-				removeJets();
 			}
 		}
 
@@ -330,7 +332,6 @@ public class JetsApp {
 		try {
 			input = sc.nextInt();
 		} catch (InputMismatchException e) {
-			System.err.println("Invalid input, try again");
 		}
 
 		sc.nextLine();
