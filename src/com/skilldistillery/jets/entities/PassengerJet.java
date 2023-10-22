@@ -9,18 +9,19 @@ public class PassengerJet extends Jet {
 
 	@Override
 	public void fly() {
-		double time = this.getRange()/this.getSpeed();
-		
-		System.out.printf("%s, Time in the air= %.2f hours.%n", this.toString(), time );
+		double time = this.getRange() / this.getSpeed();
+
+		System.out.printf("%s,\tTime in the air= %.2f hours.%n", this.toString(), time);
 	}
 
 	public String fileFormat() {
-		return "Passenger, " + getModel() + ", " + getSpeed() + ", " + getRange()+ ", " + getPrice()+ "\n";
+		return "Passenger, " + getModel() + ", " + getSpeed() + ", " + getRange() + ", " + getPrice() + "\n";
 	}
+
 	@Override
 	public String toString() {
-		return "Passenger Jet: Model= " + getModel() + ", Speed= " + getSpeed() + " mph, Range= " + getRange()
-				+ " miles, Price= $" + getPrice() ;
+		return String.format("%s%s%s%,.2f%s%,d%s%,d", "Passenger Jet:\tModel= ", getModel(), ",\tSpeed= ",
+				getSpeed(), " mph,\tRange= ", getRange(), " miles,\tPrice= $", getPrice());
 	}
 
 }

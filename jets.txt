@@ -4,3 +4,4 @@ Passenger, Concorde, 1350.0, 4500, 130000000
 Cargo, Boeing C-17, 590.0, 2760, 340000000
 Fighter, B-2 Bomber, 628.0, 6900, 1000000000
 Passenger, Airbus A380, 737.0, 9500, 350000000
+Cargo, Airbus A400M, 513.0, 5500, 30000000000

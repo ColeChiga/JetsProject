@@ -8,14 +8,14 @@ public class CargoPlane extends Jet implements CargoCarrier{
 
 	@Override
 	public void loadCargo() {
-		
+		System.out.println(getModel() + " loaded up and ready to deliver!");
 	}
 
 	@Override
 	public void fly() {
 		double time = this.getRange()/this.getSpeed();
 
-		System.out.printf("%s, Time in the air= %.2f hours.%n", this.toString(), time );
+		System.out.printf("%s,\tTime in the air= %.2f hours.%n", this.toString(), time );
 	}
 
 	public String fileFormat() {
@@ -23,8 +23,8 @@ public class CargoPlane extends Jet implements CargoCarrier{
 	}
 	@Override
 	public String toString() {
-		return "Cargo Plane: Model= " + getModel() + ", Speed= " + getSpeed() + " mph, Range= " + getRange()
-				+ " miles, Price= $" + getPrice();
+		return String.format("%s%s%s%,.2f%s%,d%s%,d", "Cargo Plane:\tModel= ", getModel() , ",\tSpeed= " , getSpeed() , "mph,\tRange= " ,getRange()
+				, " miles,\tPrice= $" , getPrice());
 	}
 	
 	

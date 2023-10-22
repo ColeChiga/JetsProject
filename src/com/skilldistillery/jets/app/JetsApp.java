@@ -21,9 +21,10 @@ public class JetsApp {
 		fleet.setFleet(loadFleet("jets.txt"));
 
 		do {
+			
 			displayUserMenu();
 			input = userChoice();
-
+			System.out.println();
 			switch (input) {
 			case 1:
 				ListFleet();
@@ -111,6 +112,7 @@ public class JetsApp {
 				fastest = jet;
 			}
 		}
+		System.out.println("The fastest jet in the fleet is:");
 		System.out.println(fastest.toString());
 
 	}
@@ -123,6 +125,7 @@ public class JetsApp {
 				farthest = jet;
 			}
 		}
+		System.out.println("The jet with the longest range is:");
 		System.out.println(farthest.toString());
 	}
 
@@ -144,8 +147,8 @@ public class JetsApp {
 
 	public void addJets() {
 		boolean addLoop = true;
-		while (addLoop) {
 			try {
+				while (addLoop) {
 				newJetMenu();
 				int iType = sc.nextInt();
 				String sType = "";
@@ -198,12 +201,12 @@ public class JetsApp {
 					System.err.println("Invalid input.");
 				}
 
+				}
 			} catch (InputMismatchException e) {
 				sc.nextLine();
 				System.err.println("Invalid input.");
 				addJets();
 			}
-		}
 	}
 
 	private void newJetMenu() {
@@ -287,6 +290,7 @@ public class JetsApp {
 	}
 
 	public void displayUserMenu() {
+		System.out.println();
 		System.out.println(" ____________________________________ ");
 		System.out.println("|           Jet Fleet Menu           |");
 		System.out.println("|––––––––––––––––––––––––––––––––––––|");
