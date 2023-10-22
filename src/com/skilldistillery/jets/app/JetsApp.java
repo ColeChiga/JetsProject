@@ -7,13 +7,14 @@ import com.skilldistillery.jets.entities.*;
 public class JetsApp {
 	Scanner sc = new Scanner(System.in);
 	AirField fleet = new AirField();
-
+//Story 1
 	public static void main(String[] args) {
 		JetsApp ja = new JetsApp();
 		ja.launch();
 		ja.sc.close();
 	}
-
+	
+//Story 4
 	public void launch() {
 
 		int input;
@@ -25,6 +26,7 @@ public class JetsApp {
 			displayUserMenu();
 			input = userChoice();
 			System.out.println();
+			
 			switch (input) {
 			case 1:
 				ListFleet();
@@ -57,6 +59,7 @@ public class JetsApp {
 		System.out.println("Thank you, come again!");
 	}
 
+//Story 3
 	private List<Jet> loadFleet(String fileName) {
 		// Declare outside the try/catch.
 		List<Jet> jets = new ArrayList<>();
@@ -92,18 +95,21 @@ public class JetsApp {
 		return jets;
 	}
 
+//Story 5
 	private void ListFleet() {
 		for (Jet jet : fleet.getFleet()) {
 			System.out.println(jet.toString());
 		}
 	}
 
+//Story 6
 	private void FlyJets() {
 		for (Jet jet : fleet.getFleet()) {
 			jet.fly();
 		}
 	}
 
+//Story 7
 	private void fastest() {
 		Jet fastest = fleet.getFleet().get(0);
 
@@ -117,6 +123,7 @@ public class JetsApp {
 
 	}
 
+// Story 8
 	private void longestRange() {
 		Jet farthest = fleet.getFleet().get(0);
 
@@ -129,6 +136,8 @@ public class JetsApp {
 		System.out.println(farthest.toString());
 	}
 
+	
+//Story 8
 	private void loadCargo() {
 		for (Jet jet : fleet.getFleet()) {
 			if (jet instanceof CargoPlane) {
@@ -137,6 +146,7 @@ public class JetsApp {
 		}
 	}
 
+//Story 8
 	private void dogFight() {
 		for (Jet jet : fleet.getFleet()) {
 			if (jet instanceof FighterJet) {
@@ -145,6 +155,7 @@ public class JetsApp {
 		}
 	}
 
+//Story 9
 	public void addJets() {
 		boolean addLoop = true;
 			try {
@@ -154,7 +165,7 @@ public class JetsApp {
 				String sType = "";
 				sc.nextLine();
 
-				if (iType == -1) {
+				if (iType == 0) {
 					addLoop = false;
 				} else if (iType >= 1 && iType <= 3) {
 					System.out.print("Input the model of jet: ");
@@ -163,7 +174,7 @@ public class JetsApp {
 					System.out.print("Input the jet's speed in mph: ");
 					double speed = sc.nextDouble();
 
-					System.out.print("Input the jet's range: ");
+					System.out.print("Input the jet's range in miles: ");
 					int range = sc.nextInt();
 
 					System.out.print("Input the jet's price: $");
@@ -209,24 +220,27 @@ public class JetsApp {
 			}
 	}
 
+// Story 9 sub-menu
 	private void newJetMenu() {
 		System.out.println(" ____________________________________");
 		System.out.println("|            New Jet Menu            |");
 		System.out.println("|––––––––––––––––––––––––––––––––––––|");
 		System.out.println("|  What type of Jet are you adding?  |");
-		System.out.println("|  -1: Go  Back                      |");
+		System.out.println("|                                    |");
+		System.out.println("|   0: Go  Back                      |");
 		System.out.println("|   1: New cargo jet                 |");
 		System.out.println("|   2: New fighter jet               |");
 		System.out.println("|   3: New passenger jet             |");
 		System.out.println("|____________________________________|");
 	}
 
+//Story 10
 	private void removeJets() {
 		boolean removeLoop = true;
 		while (removeLoop) {
 			removeJetMenu();
 			try {
-				int choice = sc.nextInt();
+				int choice = sc.nextInt()-1;
 
 				if (choice == -1) {
 					removeLoop = false;
@@ -239,20 +253,21 @@ public class JetsApp {
 						Jet jet = fleet.getFleet().get(choice);
 						String removeJet = jet.fileFormat();
 
-
+						//Clear File
 						while ((line = bufIn.readLine()) != null) {
 							if (!removeJet.equals(line)) {
 							}
 						}
+						
+						System.out.println("Removing: " + fleet.getFleet().remove(choice));
+						//Rebuild file without removed jet
 						for (int i = 0; i < fleet.size(); i++) {
 							jet = fleet.getFleet().get(i);
 							String keepJets = jet.fileFormat();
-							if(i!= choice) {
 							pw.write(keepJets);
-							}
+							
 						}
 
-						System.out.println("Removing: " + fleet.getFleet().remove(choice));
 
 						pw.close();
 						bufIn.close();
@@ -274,21 +289,23 @@ public class JetsApp {
 
 	}
 
+//Story 10 sub-menu
 	private void removeJetMenu() {
 		System.out.println(" ____________________________________");
 		System.out.println("|          Remove Jet Menu           |");
 		System.out.println("|––––––––––––––––––––––––––––––––––––|");
 		System.out.println("| Which jet would you like to remove |");
 		System.out.println("|                                    |");
-		System.out.println("|  -1) Go Back                       |");
-		for (int i = 0; i < fleet.getFleet().size(); i++) {
+		System.out.println("|   0: Go Back                       |");
+		for (int i = 0; i < fleet.size(); i++) {
 			Jet jet = fleet.getFleet().get(i);
-			System.out.printf("|   %d: %-30s|%n", i, jet.getModel());
+			System.out.printf("|   %d: %-30s|%n", (i+1), jet.getModel());
 		}
 		System.out.println("|____________________________________|");
 
 	}
 
+//Story 4
 	public void displayUserMenu() {
 		System.out.println();
 		System.out.println(" ____________________________________ ");
@@ -306,6 +323,7 @@ public class JetsApp {
 		System.out.println("|____________________________________|");
 	}
 
+//Story 4-11
 	public int userChoice() {
 		System.out.print("Please pick an option: ");
 		int input = -1;
